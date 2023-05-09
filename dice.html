@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    <title>Provo Zarin</title>
+    <link rel="icon" href="dices.png">
+</head>
+  
+<body>
+    <div class="container">
+        <h1>Luaj Me Mua</h1>
+  
+        <div class="dice">
+            <p class="Player1">Lojtari 1</p>
+            <img class="img1" src="dice6.png">
+        </div>
+  
+        <div class="dice">
+            <p class="Player2">Lojtari 2</p>
+            <img class="img2" src="dice6.png">
+        </div>
+    </div>
+  
+    <div class="container bottom">
+        <button type="button" class="butn"
+            onClick="rollTheDice()">
+            Luaj Zarin
+        </button>
+    </div>
+    <div class="container bottom">
+        <button type="button" class="butn" 
+            onClick="editNames()">
+            Ndrysho Emrin e Lojtarit
+        </button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+     .container {
+         width: 70%;
+         margin: auto;
+         text-align: center;
+     }
+   
+     .dice {
+         text-align: center;
+         display: inline-block;
+         margin: 10px;
+         width: 20%;
+     }
+   
+     body {
+         background-color: #06165e;
+         margin: 0;
+     }
+   
+     h1 {
+         margin: 30px;
+         font-family: "Lobster", cursive;
+         text-shadow: 5px 0 #877d7dbc;
+         font-size: 4.5rem;
+         color: #fcfcfc;
+         text-align: center;
+     }
+   
+     p {
+         font-size: 2rem;
+         color: #ffffffb7;
+         font-family: "Lobster", cursive;Verdana, sans-serif;
+         font-weight: bold;
+     }
+   
+     img {
+         width:100%;
+     }
+   
+     .bottom {
+         padding-top: 30px;
+     }
+   
+     .butn {
+         background: #ffffff;
+         font-family: "Indie Flower", cursive;
+         border-radius: 7px;
+         color: #0d3780;
+         font-size: 30px;
+         padding: 16px 25px 16px 25px;
+         text-decoration: none;
+     }
+   
+     .butn:hover {
+         background: #0d3780;
+         color: #ffffff; ;
+         text-decoration: none;
+     }
+ </style>
+
+ <script>
+     // Player name
+    var player1 = "Player 1";
+    var player2 = "Player 2";
+  
+    // Function to change the player name
+    function editNames() {
+        player1 = prompt("Si quhet Lojtari 1");
+        player2 = prompt("Si quhet Lojtari 2");
+  
+        document.querySelector("p.Player1").innerHTML = player1;
+        document.querySelector("p.Player2").innerHTML = player2;
+    }
+  
+    // Function to roll the dice
+    function rollTheDice() {
+        setTimeout(function () {
+            var randomNumber1 = Math.floor(Math.random() * 6) + 1;
+            var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+  
+            document.querySelector(".img1").setAttribute("src",
+                "dice" + randomNumber1 + ".png");
+  
+            document.querySelector(".img2").setAttribute("src",
+                "dice" + randomNumber2 + ".png");
+  
+            if (randomNumber1 === randomNumber2) {
+                document.querySelector("h1").innerHTML = "Barazim!";
+            }
+  
+            else if (randomNumber1 < randomNumber2) {
+                document.querySelector("h1").innerHTML
+                                = (player2 + " WINS!");
+            }
+  
+            else {
+                document.querySelector("h1").innerHTML
+                                = (player1 + " WINS!");
+            }
+        }, 2500);
+    }
+ </script>
+</body>
+  
+</html>
